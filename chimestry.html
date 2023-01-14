@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Amino Acid Quiz</title>
+    <style>
+      /* styling for the quiz container */
+      *{
+        font-family: 'Helvetica', 'Arial', sans-serif;
+      }
+      .quiz-container {
+        width: 80%;
+        margin: 0 auto;
+        background-color: #F5F5F5;
+        padding: 20px;
+        border-radius: 10px;
+      }
+      
+      /* styling for the quiz questions */
+      .quiz-question {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+      
+      /* styling for the quiz answers */
+      .quiz-answer {
+        margin-bottom: 20px;
+      }
+      
+      /* styling for the submit button */
+      .quiz-submit {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      
+      /* styling for the result message */
+      .quiz-result {
+        margin-top: 20px;
+        font-size: 1.2em;
+      }
+      
+      /* styling for correct answers */
+      .correct {
+        color: green;
+      }
+      
+      /* styling for incorrect answers */
+      .incorrect {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="quiz-container">
+      <h1>Amino Acid Quiz</h1>
+        <div class="quiz-question">
+          The amino acid _ is often found at the active site of enzymes, where it helps to catalyze chemical reactions.
+        </div>
+        <input type="text" id="question1" class="quiz-answer" placeholder="Enter your answer">
+      
+        <div class="quiz-question">
+          Can you identify the amino acid represented by the following abbreviation: "Cys"?
+        </div>
+        <input type="text" id="question2" class="quiz-answer" placeholder="Enter your answer">
+      
+        <div class="quiz-question">
+          The amino acid _ is often found at the ends of proteins, where it helps to stabilize the protein structure.
+        </div>
+        <input type="text" id="question3" class="quiz-answer" placeholder="Enter your answer">
+      
+        <div class="quiz-question">
+          Can you identify the amino acid represented by the following abbreviation: "His"?
+        </div>
+        <input type="text" id="question4" class="quiz-answer" placeholder="Enter your answer">
+      
+        <div class="quiz-question">
+          The amino acid _ is often found in the interior of proteins, where it helps to stabilize the protein structure through hydrophobic interactions.
+        </div>
+        <input type="text" id="question5" class="quiz-answer" placeholder="Enter your answer">
+        <div>
+        <button class="quiz-submit" onclick="checkAnswers()">Check answers</button>
+        </div>
+<p id="result" class="quiz-result"></p>
+</div>
+<script>
+  function checkAnswers() {
+    var question1 = document.getElementById("question1").value;
+    var question2 = document.getElementById("question2").value;
+    var question3 = document.getElementById("question3").value;
+    var question4 = document.getElementById("question4").value;
+    var question5 = document.getElementById("question5").value;
+    var correctAnswers = ["Lysine", "Cysteine", "Proline", "Histidine", "Leucine"];
+    var correctCount = 0;
+    
+    if (question1.toLowerCase() === correctAnswers[0].toLowerCase()) {
+      document.getElementById("question1").classList.add("correct");
+      correctCount++;
+    } else {
+      document.getElementById("question1").classList.add("incorrect");
+    }
+    
+    if (question2.toLowerCase() === correctAnswers[1].toLowerCase()) {
+      document.getElementById("question2").classList.add("correct");
+      correctCount++;
+    } else {
+      document.getElementById("question2").classList.add("incorrect");
+    }
+    
+    if (question3.toLowerCase() === correctAnswers[2].toLowerCase()) {
+      document.getElementById("question3").classList.add("correct");
+      correctCount++;
+    } else {
+      document.getElementById("question3").classList.add("incorrect");
+    }
+    
+    if (question4.toLowerCase() === correctAnswers[3].toLowerCase()) {
+      document.getElementById("question4").classList.add("correct");
+      correctCount++;
+    } else {
+      document.getElementById("question4").classList.add("incorrect");
+    }
+    
+    if (question5.toLowerCase() === correctAnswers[4].toLowerCase()) {
+      document.getElementById("question5").classList.add("correct");
+      correctCount++;
+    } else {
+      document.getElementById("question5").classList.add("incorrect");
+    }
+    
+    if (correctCount === 5) {
+      document.getElementById("result").innerHTML = "Congratulations 🎉 You've completed the challenge!";
+    } else {
+      document.getElementById("result").innerHTML = "You got " + correctCount + " out of 5 questions correct. Try again!";
+    }
+  }
+</script>
+  </body>
+</html>
