@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Unlock Challenge</title>
+    <style>
+    *{
+        font-family: 'Helvetica', 'Arial', sans-serif;
+      }
+        /* keyframes for the unlocking animation */
+    @keyframes unlocking {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    }
+
+    /* styling for the lock image */
+    .lock-img {
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 50px;
+    transition: transform 1s ease; /* animate the transform property */
+    }
+
+/* add the unlocking animation when the answers are correct */
+    .unlocked .lock-img {
+    animation: unlocking 1s ease forwards;
+    }
+
+      /* styling for the lock container */
+      .lock-container {
+        width: 400px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      
+      /* styling for the lock image */
+      .lock-img {
+        width: 200px;
+        margin: 0 auto;
+        margin-top: 50px;
+      }
+      
+      /* styling for the answer input fields */
+      /* styling for the input fields */
+    .lock-input {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #ccc; /* add a bottom border */
+    border-radius: 4px;
+    font-size: 1.2em;
+    text-align: center;
+    transition: border-color 0.5s ease; /* animate border color */
+    }
+
+    /* add a focus state for the input fields */
+    .lock-input:focus {
+    border-bottom: 2px solid #4CAF50; /* change border color on focus */
+    }
+
+      
+      /* styling for the submit button */
+      .lock-submit {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      
+      /* styling for the result message */
+      .lock-result {
+        margin-top: 20px;
+        font-size: 1.2em;
+      }
+      
+      /* styling for correct answers */
+      .correct {
+        color: green;
+      }
+      
+      /* styling for incorrect answers */
+      .incorrect {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lock-container">
+      <img src="lock.png" class="lock-img" alt="lock" id="lock">
+      <img src="unlocked.png" class="lock-img" id="unlock" alt="lock" style="display: none;">
+        <input type="text" id="answer1" class="lock-input" placeholder="Answer to riddle 1">
+        <input type="text" id="answer2" class="lock-input" placeholder="Answer to riddle 2">
+        <input type="text" id="answer3" class="lock-input" placeholder="Answer to riddle 3">
+        <button class="lock-submit" onclick="checkAnswers()">Unlock</button>
+      <p id="result" class="lock-result"></p>
+    </div>
+    
+    <script>
+      function checkAnswers() {
+        var answer1 = document.getElementById("answer1").value;
+        var answer2 = document.getElementById("answer2").value;
+        var answer3 = document.getElementById("answer3").value;
+        var correctAnswers = ["protein denaturation and renaturation", "answer2", "Ami3o_A3id"];
+        var correctCount = 0;
+        
+        if (answer1.toLowerCase() === correctAnswers[0].toLowerCase()) {
+          correctCount++;
+        } 
+        
+        if (answer2.toLowerCase() === correctAnswers[1].toLowerCase()) {
+          correctCount++;
+        } 
+        
+        if (answer3.toLowerCase() === correctAnswers[2].toLowerCase()) {
+          correctCount++;
+        } 
+        
+        if (correctCount === 3) {
+        document.getElementById("result").innerHTML = "Congratulations 🎉 You've completed the challenge!";
+        document.getElementsByClassName("lock-container")[0].classList.add("unlocked");
+        document.getElementById("lock").style.display = 'none';
+        document.getElementById("unlock").style.display = 'block';
+      } else {
+        document.getElementById("result").innerHTML = "You got " + correctCount + " out of 3 answers correct. Try again!";
+      }
+    }
+    </script>
+  </body>
+</html>
